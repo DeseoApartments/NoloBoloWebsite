@@ -1,0 +1,628 @@
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.pulsing-title {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Pulsante Scopri di più */
+.discover-more-button {
+    background: #d35400;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.discover-more-button:hover {
+    background: #d35400;
+}
+
+/* Sezione Informazioni aggiuntive */
+#additional-info .additional-info-content {
+    text-align: left;
+}
+
+#additional-info h3 {
+    margin-top: 20px;
+}
+
+#additional-info p {
+    margin-bottom: 20px;
+}
+
+/* Generali */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes move {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    opacity: 0; /* Imposta l'opacità iniziale del body a 0 */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background: #444;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative; /* Aggiunto per posizionare il pulsante */
+}
+
+header .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+header .announcement {
+    margin-top: 5px;
+    font-size: 1.2em;
+    color: #e67e22;
+    animation: move 3s ease-in-out infinite;
+}
+
+/* Pulsante Crea Ordine Custom */
+.custom-order-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.custom-order-button:hover {
+    background: #d35400;
+}
+
+nav {
+    background: #222;
+    color: white;
+}
+
+nav .container {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background: #444;
+}
+
+.hero {
+    background: url('drgon.png') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin: 0;
+    color: #e67e22; /* Colore oro */
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    color: #e67e22; /* Colore oro */
+}
+
+.cta-button {
+    background: #e67e22;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.section {
+    padding: 50px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiungi un'ombra leggera */
+    margin: 20px 0; /* Aggiungi margine sopra e sotto */
+}
+
+.section-title {
+    background: #D9A545;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.service-title {
+    background: #756D5A;
+    color: white;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    justify-content: center;
+}
+
+.carousel-item {
+    min-width: 250px; /* Riduci la larghezza minima del box */
+    margin: 0 10px;
+    background: #f7f7f7;
+    padding: 10px; /* Riduci il padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    position: relative;
+    text-align: center; /* Centro i contenuti */
+}
+
+.carousel-item h3.service-title {
+    font-size: 1.2em; /* Riduci la dimensione del font del titolo */
+    margin-bottom: 5px; /* Riduci il margine inferiore */
+}
+
+.carousel-item p {
+    font-size: 0.9em; /* Riduci la dimensione del font dei paragrafi */
+    margin: 5px 0; /* Riduci il margine superiore e inferiore */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-item .add-to-cart {
+    background-color: #d35400;
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Riduci il padding del pulsante */
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em; /* Riduci la dimensione del font del pulsante */
+}
+
+.carousel-item .add-to-cart:hover {
+    background-color: #756D5A;
+}
+
+.rating .star {
+    font-size: 1.2em; /* Riduci la dimensione delle stelle */
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rating .star:hover,
+.rating .star.selected {
+    color: #e67e22;
+}
+
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.rating .star {
+    font-size: 1.2em; /* Riduci la dimensione delle stelle */
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rating .star:hover,
+.rating .star.selected {
+    color: #e67e22;
+}
+
+.pricing-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 45%;
+    position: relative;
+    margin: 10px 0;
+}
+
+.extra-icon img {
+    width: 100px; /* Modifica la dimensione qui */
+    height: 100px; /* Modifica la dimensione qui */
+    margin: 10px 0;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; 
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.delivery-info,
+.contact-info,
+.faq-item {
+    text-align: left;
+}
+
+.order-form {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.order-form select,
+.order-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.order-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #000;
+    padding: 8px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.tab-button.active,
+.tab-button:hover {
+    background: #d35400;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.quantity-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity-section label {
+    flex-grow: 1;
+}
+
+.quantity-section input {
+    width: 60px;
+}
+
+.set-selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.set-selection label,
+.set-selection input {
+    margin: 5px 0;
+}
+
+.extra-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.extra-options label,
+.extra-options input {
+    margin: 5px 0;
+}
+
+.order-summary {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.order-summary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-summary ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-summary button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.order-summary button:hover {
+    background: #d35400;
+}
+
+footer {
+    background: #444;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* FAQ styles */
+.faq-answer {
+    display: none;
+    padding-left: 20px;
+}
+
+.faq-question {
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    text-decoration: underline;
+}
+
+.quantity {
+    width: 60px;
+}
+
+.order-form {
+    text-align: center;
+    max-width: 800px; /* Imposta una larghezza massima per il contenitore del form */
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%; /* Imposta la larghezza della tabella al 100% del contenitore */
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center; /* Centra il testo nelle celle */
+}
+
+.quantity {
+    width: 60px; /* Imposta una larghezza fissa per i campi di input */
+}
+
+.order-table input[type="number"] {
+    width: 100%; /* Imposta la larghezza al 100% della cella */
+    box-sizing: border-box; /* Include padding e border nella larghezza totale */
+}
+
+.order-form input[type="date"],
+.order-form input[type="time"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form input[type="text"] {
+    width: calc(100% - 0px); /* Riduci la larghezza per includere il padding */
+    box-sizing: border-box; /* Include padding e border nella larghezza totale */
+    padding: 10px; /* Aggiungi padding */
+    margin-bottom: 10px; /* Spazio inferiore per separare gli input */
+    border-radius: 5px; /* Arrotonda gli angoli */
+    border: 1px solid #ccc; /* Bordo leggero */
+}
+
+
+/* Stile del modulo di preventivo */
+.quote-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-form .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.quote-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quote-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding e border nella larghezza totale */
+    margin-bottom: 10px; /* Spazio inferiore per separare gli input */
+}
+
+.submit-button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit-button:hover {
+    background: #d35400;
+}
+
+.quote-result {
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-result h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.quote-result ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quote-result ul li {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.quote-result p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
