@@ -1,18 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Aggiungi la classe fade-in a tutti gli elementi
     document.body.classList.add('fade-in');
     
     const questions = document.querySelectorAll('.faq-question');
-    
     questions.forEach(question => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
-            
-            if (answer.style.display === 'block') {
-                answer.style.display = 'none';
-            } else {
-                answer.style.display = 'block';
-            }
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
         });
     });
 
@@ -23,16 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initAutocomplete();
 
-    // Gestione delle valutazioni a stelle
     const stars = document.querySelectorAll('.star');
     stars.forEach(star => {
         star.addEventListener('click', () => {
             const value = star.getAttribute('data-value');
             const allStars = star.parentNode.querySelectorAll('.star');
             allStars.forEach(s => s.classList.remove('selected'));
-            star.classList.add('selected');
-            for (let i = 1; i < value; i++) {
-                allStars[i - 1].classList.add('selected');
+            for (let i = 0; i < value; i++) {
+                allStars[i].classList.add('selected');
             }
         });
     });
@@ -74,7 +65,6 @@ function initAutocomplete() {
         autocomplete.addListener('place_changed', () => {
             const place = autocomplete.getPlace();
             if (!place.geometry) {
-                // L'utente ha inserito un indirizzo non valido
                 input.value = '';
             }
         });
@@ -84,14 +74,12 @@ function initAutocomplete() {
 function calculateQuote(event) {
     event.preventDefault();
     
-    // Raccogli i dati dal form
     const singleBeds = parseInt(document.getElementById('single-beds').value);
     const doubleBeds = parseInt(document.getElementById('double-beds').value);
     const bathrooms = parseInt(document.getElementById('bathrooms').value);
     const apartments = parseInt(document.getElementById('apartments').value);
-    const weeklyChanges = 1;  // Fissato a 1 come richiesto
+    const weeklyChanges = 1;
     
-    // Prezzi degli articoli
     const prices = {
         "Lenzuolo matrimoniale": 6.10,
         "Copripiumino matrimoniale": 8.78,
@@ -105,7 +93,6 @@ function calculateQuote(event) {
         "Canovaccio": 1.71
     };
     
-    // Calcola le quantità necessarie per 4 settimane
     const quantities = {
         "Lenzuolo matrimoniale": doubleBeds * weeklyChanges * 4,
         "Copripiumino matrimoniale": doubleBeds * weeklyChanges * 4,
@@ -119,13 +106,11 @@ function calculateQuote(event) {
         "Canovaccio": apartments * weeklyChanges * 4
     };
     
-    // Calcola il totale
     let total = 0;
     for (let item in quantities) {
         total += quantities[item] * prices[item];
     }
     
-    // Mostra il risultato
     let result = `<h3>Preventivo Mensile (Unità che consegneremo la prima volta)</h3><ul>`;
     for (let item in quantities) {
         result += `<li>${item}: ${quantities[item]} unità</li>`;
@@ -133,5 +118,65 @@ function calculateQuote(event) {
     result += `</ul><p>Totale: €${total.toFixed(2)} (IVA inclusa e consegna gratuita)</p>`;
     
     document.getElementById('quote-result').innerHTML = result;
+    document.getElementById('confirm-quote-button').style.display = 'block';
 }
 
+function showOrderForm() {
+    document.getElementById('order-form-section').style.display = 'block';
+    document.getElementById('order-form-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function submitOrder(event) {
+    event.preventDefault();
+    
+    const fullName = document.getElementById('full-name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const deliveryDate = document.getElementById('delivery-date').value;
+    const deliveryTime = document.getElementById('delivery-time').value;
+    
+    const orderDetails = {
+        fullName,
+        phone,
+        email,
+        deliveryDate,
+        deliveryTime
+    };
+
+    console.log(orderDetails); // Log per debug
+
+    emailjs.send('service_t1rib3a', 'template_prc6spa', orderDetails)
+        .then((response) => {
+            console.log('SUCCESS!', response.status, response.text); // Log per debug
+            alert('Ordine inviato con successo!');
+        }, (error) => {
+            console.log('FAILED...', error); // Log per debug
+            alert('Errore nell\'invio dell\'ordine.');
+        });
+}
+
+function submitContactForm(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+    
+    const contactDetails = {
+    name,
+    email,
+    phone,
+    message
+    };
+    
+    console.log(contactDetails); // Log for debugging
+    
+    emailjs.send('service_t1rib3a', 'template_prc6spa', contactDetails)
+    .then((response) => {
+    console.log('SUCCESS!', response.status, response.text); // Log for debugging
+    alert('Richiesta inviata con successo!');
+    }, (error) => {
+    console.log('FAILED...', error); // Log for debugging
+    });
+    }

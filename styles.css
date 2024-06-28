@@ -55,7 +55,6 @@
     border-right: none;
 }
 
-
 /* Pulsante Scopri di più */
 .discover-more-button {
     background: #d35400;
@@ -753,4 +752,23 @@ footer p {
 /* Titolo della sezione */
 .section-title.pulsing-title {
     animation: pulse 2s ease-in-out infinite;
+}
+
+
+#confirm-quote-button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: auto; /* Imposta la larghezza automatica */
+    display: block; /* Assicurati che il pulsante sia un blocco per il centramento */
+    margin: 20px auto; /* Aggiungi margini sopra e sotto, e centrare orizzontalmente */
+    transition: background 0.3s ease;
+}
+
+#confirm-quote-button:hover {
+    background: #d35400;
 }

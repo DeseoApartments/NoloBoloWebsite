@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
+<head>   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOLOBOLO - Noleggio Biancheria a Bologna & dintorni</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init('od3iPgO4TzcNkjVpK'); // Sostituisci 'od3iPgO4TzcNkjVpK' con il tuo User ID
+        })();
+    </script>
 </head>
 <body>
+    <!-- Il resto del tuo codice HTML -->
     <header>
         <div class="container">
             <div class="logo">
@@ -29,7 +36,7 @@
                 <li><a href="#pricing">Listino Prezzi</a></li>
                 <li><a href="#cleaning-services">Servizio Pulizie</a></li>
                 <li><a href="#extra-services">Accessori Extra</a></li>
-                <li><a href="#order">Ordina Ora</a></li>
+                <li><a href="#quote">Calcola Preventivo</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contacts">Contatti</a></li>
             </ul>
@@ -131,7 +138,7 @@
                     <h3 class="service-title">Monolocale</h3>
                     <p><b>° ° ° ° °</b></p>
                     <img src="monolocale.png" alt="Pulizia Monolocale">
-                    <p><br>€ 42,50</p></br>
+                    <p style="font-size: 1.5em;"><b>€ 42,50</b></p>
                     <div class="rating">
                         
                     </div>
@@ -140,7 +147,7 @@
                     <h3 class="service-title">Bilocale</h3>
                     <p><b>° ° ° ° °</b></p>
                     <img src="bilocale.png" alt="Pulizia Bilocale">
-                    <p>€ 51,00</p>
+                    <p style="font-size: 1.5em;"><b>€ 51,00</b></p>
                     <div class="rating">
         
                     </div>
@@ -149,7 +156,7 @@
                     <h3 class="service-title">Trilocale</h3>
                     <p><b>° ° ° ° °</b></p>
                     <img src="trilocale.png" alt="Pulizia Trilocale">
-                    <p>€ 71,40</p>
+                    <p style="font-size: 1.5em;"><b>€ 71,40</b></p>
                     <div class="rating">
                      
                     </div>
@@ -158,7 +165,7 @@
                     <h3 class="service-title">Quadrilocale</h3>
                     <p><b>° ° ° ° °</b></p>
                     <img src="quadrilocale.png" alt="Pulizia Quadrilocale">
-                    <p>€ 81,60</p>
+                    <p style="font-size: 1.5em;"><b>€ 81,60</b></p>
                     <div class="rating">
                     </div>
                     
@@ -276,29 +283,55 @@
                 </div>
                 <button type="submit" class="submit-button">Calcola Preventivo</button>
             </form>
-            <div id="quote-result" class="quote-result"></div>   
+            <div id="quote-result" class="quote-result"></div>
+            <button id="confirm-quote-button" class="submit-button" style="display: none;" onclick="showOrderForm()">Conferma Preventivo</button>
         </div>
     </section>
     
-    
-    
-    
+    <section class="section" id="order-form-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Conferma il tuo Ordine</h2>
+            <form id="order-form" class="order-form" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="full-name">Nome e Cognome:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Numero di Telefono:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="delivery-date">Data di Consegna:</label>
+                    <input type="date" id="delivery-date" name="delivery-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="delivery-time">Ora di Consegna:</label>
+                    <input type="time" id="delivery-time" name="delivery-time" required>
+                </div>
+                <button type="submit" class="submit-button">Invia Ordine</button>
+            </form>
+        </div>
+    </section>
 
     <section class="section" id="order">
         <div class="container">
-            <h2 class="section-title pulsing-title">Ordina Ora</h2>
+            <h2 class="section-title pulsing-title">Ordine Personalizzato</h2>
             <div class="order-form fade-in">
-                <p>Per ordinare o per richiedere un preventivo personalizzato, contattaci utilizzando uno dei seguenti metodi:</p>
+                <p>Per richiedere un preventivo personalizzato, contattaci utilizzando uno dei seguenti metodi:</p>
                 <ul>
                 <div><center>  
                 
-                    <li><img src="wapp.png" alt="Tel" width="30px" height="30px"><br> <a href="https://wa.me/393880599971" target="_blank">+393880599971</a></li>
-                    <li><img src="mail.png" alt="Tel" width="23px" height="23px"><br> <a href="mailto:info@nolobolo.com">info@nolobolo.com</a></li>
+                    <li><img src="wapp.png" alt="Tel" width="40px" height="40px"><br> <a href="https://wa.me/393880599971" target="_blank">+393880599971</a></li>
+                    <li><img src="mail.png" alt="Tel" width="35px" height="35px"><br> <a href="mailto:info@nolobolo.com">info@nolobolo.it</a></li>
                     <p><b>° ° ° ° °</b></p>
                 </center>
                 </ul>
                 <p>In alternativa, compila il modulo seguente per essere ricontattato:</p>
-                <form id="contact-form">
+                <form id="contact-form" onsubmit="submitContactForm(event)">
                     <div class="form-group">
                         <label for="name">Nome: *</label>
                         <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
@@ -358,4 +391,3 @@
     </footer>
 </body>
 </html>
-
