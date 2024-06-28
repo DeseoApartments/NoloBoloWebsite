@@ -7,6 +7,55 @@
     animation: pulse 2s ease-in-out infinite;
 }
 
+/* Stile della tabella dei prezzi */
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pricing-table th, .pricing-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.pricing-table th {
+    background-color: #e67e22;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.pricing-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.pricing-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.pricing-table td {
+    background-color: white;
+}
+
+.pricing-table th, .pricing-table td {
+    border-right: 1px solid #ddd;
+}
+
+.pricing-table th:last-child, .pricing-table td:last-child {
+    border-right: none;
+}
+
+
 /* Pulsante Scopri di più */
 .discover-more-button {
     background: #d35400;
@@ -625,4 +674,83 @@ footer p {
     font-weight: bold;
     margin-top: 20px;
     text-align: center;
+}
+
+/* Sezione Ordina Ora */
+.order-form {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Aggiungi margine sopra */
+}
+
+.order-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.order-form button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.3s ease;
+}
+
+.order-form button:hover {
+    background: #d35400;
+}
+
+.order-form .submit-button {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.3s ease;
+}
+
+.order-form .submit-button:hover {
+    background: #d35400;
+}
+
+.order-form ul {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.order-form ul li {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+/* Titolo della sezione */
+.section-title.pulsing-title {
+    animation: pulse 2s ease-in-out infinite;
 }
