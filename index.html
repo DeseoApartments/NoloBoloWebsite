@@ -285,87 +285,29 @@
     <section class="section" id="order">
         <div class="container">
             <h2 class="section-title">Ordina Ora</h2>
-            <div class="order-form">
-                <table class="order-table">
-                    <thead>
-                        <tr>
-                            <th>Articolo</th>
-                            <th>Prezzo (€)</th>
-                            <th>Quantità</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1 Lenzuolo matrimoniale</td>
-                            <td>€ 7,63</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Lenzuolo matrimoniale" data-price="7.63"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Copripiumino matrimoniale</td>
-                            <td>€ 10,98</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Copripiumino matrimoniale" data-price="10.98"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Lenzuolo singolo</td>
-                            <td>€ 6,10</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Lenzuolo singolo" data-price="6.10"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Copripiumino singolo</td>
-                            <td>€ 8,54</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Copripiumino singolo" data-price="8.54"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Federa</td>
-                            <td>€ 1,53</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Federa" data-price="1.53"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Asciugamano Telo Doccia</td>
-                            <td>€ 3,97</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Asciugamano Telo Doccia" data-price="3.97"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Asciugamano Viso</td>
-                            <td>€ 2,75</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Asciugamano Viso" data-price="2.75"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Asciugamano Ospiti</td>
-                            <td>€ 1,53</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Asciugamano Ospiti" data-price="1.53"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Scendibagno (Tappetino)</td>
-                            <td>€ 3,66</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Scendibagno (Tappetino)" data-price="3.66"></td>
-                        </tr>
-                        <tr>
-                            <td>1 Canovaccio</td>
-                            <td>€ 2,14</td>
-                            <td><input type="number" min="0" value="0" class="quantity" data-item="1 Canovaccio" data-price="2.14"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="order-summary">
-                    <center><h3>Carrello</h3>
-                    <ul id="cart-items"></ul>
-                    <p id="order-total">Totale: €0.00 (IVA incl.)</p></center>
-                    <label for="date-order">Data di Consegna: *</label>
-                    <input type="date" id="date-order" name="date-order" required>
-                    <label for="time-order">Orario di Consegna: *</label>
-                    <input type="time" id="time-order" name="time-order" min="09:00" max="17:00" required>
-                    <label for="address-order">Luogo di Consegna: *</label>
-                    <input type="text" id="address-order" name="address-order" placeholder="Inserisci l'indirizzo di consegna" required>
-                    <label for="email-order">Email: *</label>
-                    <input type="email" id="email-order" name="email-order" placeholder="Inserisci la tua email" required>
-                    <label for="phone-order">Numero di Telefono: *</label>
-                    <input type="tel" id="phone-order" name="phone-order" placeholder="Inserisci il tuo numero di telefono" required>
-                    <center><button onclick="submitOrder(event)">Invia Ordine</button></center>
-                </div>
+            <div class="order-info">
+                <p>Per ordinare o per richiedere un preventivo personalizzato, contattaci utilizzando uno dei seguenti metodi:</p>
+                <ul>
+                    <li>Telefono: <a href="tel:+393880599971">+39 388 05 999 71</a></li>
+                    <li>WhatsApp: <a href="https://wa.me/393880599971" target="_blank">+39 388 05 999 71</a></li>
+                    <li>Email: <a href="mailto:info@nolobolo.com">info@nolobolo.com</a></li>
+                </ul>
+                <p>In alternativa, compila il modulo seguente per essere ricontattato:</p>
+                <form id="contact-form">
+                    <label for="name">Nome: *</label>
+                    <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
+                    <label for="email">Email: *</label>
+                    <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required>
+                    <label for="phone">Numero di Telefono: *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Inserisci il tuo numero di telefono" required>
+                    <label for="message">Messaggio:</label>
+                    <textarea id="message" name="message" placeholder="Inserisci il tuo messaggio"></textarea>
+                    <center><button type="submit">Invia Richiesta</button></center>
+                </form>
             </div>
         </div>
     </section>
+    
 
     <section class="section" id="faq">
         <div class="container">
