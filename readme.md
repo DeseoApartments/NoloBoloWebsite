@@ -1,1 +1,0 @@
-Link to website: [NoloBolo](https://deseoapartments.github.io/NoloBoloWebsite)
