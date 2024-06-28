@@ -293,7 +293,7 @@
                     <li>Email: <a href="mailto:info@nolobolo.com">info@nolobolo.com</a></li>
                 </ul>
                 <p>In alternativa, compila il modulo seguente per essere ricontattato:</p>
-                <form id="contact-form">
+                <form id="contact-form" action="send_email.php" method="POST">
                     <label for="name">Nome: *</label>
                     <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
                     <label for="email">Email: *</label>
@@ -307,6 +307,7 @@
             </div>
         </div>
     </section>
+    
     
 
     <section class="section" id="faq">
