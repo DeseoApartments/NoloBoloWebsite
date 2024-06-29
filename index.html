@@ -3,7 +3,7 @@
 <head>   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOLOBOLO - Noleggio Biancheria a Bologna & dintorni</title>
+    <title>NOLOBOLO - Noleggio Biancheria a Bologna & Provincia</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
@@ -304,16 +304,11 @@
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div class="form-group">
-                    <label for="delivery-date">Data di Consegna:</label>
-                    <input type="date" id="delivery-date" name="delivery-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="delivery-time">Ora di Consegna:</label>
-                    <input type="time" id="delivery-time" name="delivery-time" required>
-                </div>
+                <input type="hidden" id="quote-details" name="quote-details">
                 <button type="submit" class="submit-button">Invia Ordine</button>
             </form>
+            
+                      
         </div>
     </section>
 

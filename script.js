@@ -119,6 +119,12 @@ function calculateQuote(event) {
     
     document.getElementById('quote-result').innerHTML = result;
     document.getElementById('confirm-quote-button').style.display = 'block';
+
+    // Salva i dettagli del preventivo
+    document.getElementById('quote-details').value = JSON.stringify({
+        quantities: quantities,
+        total: total.toFixed(2)
+    });
 }
 
 function showOrderForm() {
@@ -129,54 +135,78 @@ function showOrderForm() {
 function submitOrder(event) {
     event.preventDefault();
     
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    submitButton.disabled = true; // Disabilita il pulsante
+    
     const fullName = document.getElementById('full-name').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
-    const deliveryDate = document.getElementById('delivery-date').value;
-    const deliveryTime = document.getElementById('delivery-time').value;
+    const quoteDetails = JSON.parse(document.getElementById('quote-details').value);
     
-    const orderDetails = {
+    let orderDetails = {
         fullName,
         phone,
         email,
-        deliveryDate,
-        deliveryTime
+        orderDetails: '',
+        totalPrice: quoteDetails.total
     };
+
+    // Aggiungi le quantità di biancheria all'ordine
+    for (let item in quoteDetails.quantities) {
+        orderDetails.orderDetails += `${item}: ${quoteDetails.quantities[item]} unità\n`;
+    }
 
     console.log(orderDetails); // Log per debug
 
     emailjs.send('service_t1rib3a', 'template_prc6spa', orderDetails)
         .then((response) => {
             console.log('SUCCESS!', response.status, response.text); // Log per debug
-            alert('Ordine inviato con successo!');
+            alert('Congratulazioni!\nIl tuo ordine è stato preso in carico. A breve riceverai una mail con tutte le informazioni necessarie per procedere al pagamento.');
+            submitButton.disabled = false; // Abilita il pulsante
+            resetForms(); // Azzera i campi del form
+            window.location.href = '#home'; // Reindirizza alla pagina principale
         }, (error) => {
             console.log('FAILED...', error); // Log per debug
             alert('Errore nell\'invio dell\'ordine.');
+            submitButton.disabled = false; // Abilita il pulsante
         });
+}
+
+function resetForms() {
+    document.getElementById('quote-form').reset();
+    document.getElementById('order-form').reset();
+    document.getElementById('quote-result').innerHTML = '';
+    document.getElementById('confirm-quote-button').style.display = 'none';
 }
 
 function submitContactForm(event) {
     event.preventDefault();
 
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    submitButton.disabled = true; // Disabilita il pulsante
+
     const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value
+    const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
     
     const contactDetails = {
-    name,
-    email,
-    phone,
-    message
+        name,
+        email,
+        phone,
+        message
     };
     
     console.log(contactDetails); // Log for debugging
     
     emailjs.send('service_t1rib3a', 'template_prc6spa', contactDetails)
     .then((response) => {
-    console.log('SUCCESS!', response.status, response.text); // Log for debugging
-    alert('Richiesta inviata con successo!');
+        console.log('SUCCESS!', response.status, response.text); // Log for debugging
+        alert('Richiesta inviata con successo!');
+        submitButton.disabled = false; // Abilita il pulsante
     }, (error) => {
-    console.log('FAILED...', error); // Log for debugging
+        console.log('FAILED...', error); // Log for debugging
+        alert('Errore nell\'invio della richiesta.');
+        submitButton.disabled = false; // Abilita il pulsante
     });
-    }
+}
