@@ -78,7 +78,7 @@ function calculateQuote(event) {
     const doubleBeds = parseInt(document.getElementById('double-beds').value);
     const bathrooms = parseInt(document.getElementById('bathrooms').value);
     const apartments = parseInt(document.getElementById('apartments').value);
-    const weeklyChanges = 1;
+    const weeklyChanges = 4;
     
     const prices = {
         "Lenzuolo matrimoniale": 6.10,
