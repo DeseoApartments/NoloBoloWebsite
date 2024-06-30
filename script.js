@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('fade-in');
-    
+
     const questions = document.querySelectorAll('.faq-question');
     questions.forEach(question => {
         question.addEventListener('click', () => {
@@ -81,16 +81,16 @@ function calculateQuote(event) {
     const weeklyChanges = 1;
     
     const prices = {
-        "Lenzuolo matrimoniale": 7,
-        "Copripiumino matrimoniale": 10,
-        "Lenzuolo singolo": 6,
-        "Copripiumino singolo": 8.50,
-        "Federa": 1.50,
-        "Asciugamano Telo Doccia": 4,
-        "Asciugamano Viso": 2.5,
-        "Asciugamano Ospiti": 1.5,
-        "Scendibagno (Tappetino)": 3.5,
-        "Canovaccio": 2
+        "Lenzuolo matrimoniale": 6.10,
+        "Copripiumino matrimoniale": 8.78,
+        "Lenzuolo singolo": 4.88,
+        "Copripiumino singolo": 6.83,
+        "Federa": 1.22,
+        "Asciugamano Telo Doccia": 3.17,
+        "Asciugamano Viso": 2.20,
+        "Asciugamano Ospiti": 1.22,
+        "Scendibagno (Tappetino)": 2.93,
+        "Canovaccio": 1.71
     };
     
     const quantities = {
@@ -107,25 +107,22 @@ function calculateQuote(event) {
     };
     
     let total = 0;
+    let htmlResult = "<h3>Preventivo Mensile (Unità che consegneremo la prima volta)</h3><ul>";
+    let textResult = "";
     for (let item in quantities) {
         total += quantities[item] * prices[item];
+        htmlResult += `<li>${item}: ${quantities[item]} unità</li>`;
+        textResult += `${item}: ${quantities[item]} unità\n`;
     }
+    htmlResult += `</ul><p>Totale: €${total.toFixed(2)} (IVA inclusa e consegna gratuita)</p>`;
+    textResult += `\nTotale: €${total.toFixed(2)} (IVA inclusa e consegna gratuita)`;
     
-    let result = `<h3>Preventivo Mensile (Unità che consegneremo la prima volta)</h3><ul>`;
-    for (let item in quantities) {
-        result += `<li>${item}: ${quantities[item]} unità</li>`;
-    }
-    result += `</ul><p>Totale: €${total.toFixed(2)} (IVA inclusa e consegna gratuita)</p>`;
-    
-    document.getElementById('quote-result').innerHTML = result;
+    document.getElementById('quote-result').innerHTML = htmlResult;
+    document.getElementById('quote-details').value = textResult; // Pass the plain text quote details to the hidden input
     document.getElementById('confirm-quote-button').style.display = 'block';
-
-    // Salva i dettagli del preventivo
-    document.getElementById('quote-details').value = JSON.stringify({
-        quantities: quantities,
-        total: total.toFixed(2)
-    });
 }
+
+
 
 function showOrderForm() {
     document.getElementById('order-form-section').style.display = 'block';
@@ -135,44 +132,37 @@ function showOrderForm() {
 function submitOrder(event) {
     event.preventDefault();
     
-    const submitButton = event.target.querySelector('button[type="submit"]');
-    submitButton.disabled = true; // Disabilita il pulsante
-    
     const fullName = document.getElementById('full-name').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
-    const quoteDetails = JSON.parse(document.getElementById('quote-details').value);
-    
-    let orderDetails = {
-        fullName,
-        phone,
-        email,
-        orderDetails: '',
-        totalPrice: quoteDetails.total
+    const quoteDetails = document.getElementById('quote-details').value;
+
+    const orderDetails = {
+        fullName: fullName,
+        phone: phone,
+        email: email,
+        quoteDetails: quoteDetails // Assicurati che il nome della proprietà corrisponda a quello nel template di EmailJS
     };
 
-    // Aggiungi le quantità di biancheria all'ordine
-    for (let item in quoteDetails.quantities) {
-        orderDetails.orderDetails += `${item}: ${quoteDetails.quantities[item]} unità\n`;
-    }
+    console.log(orderDetails); // Log for debugging
 
-    console.log(orderDetails); // Log per debug
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
 
     emailjs.send('service_t1rib3a', 'template_prc6spa', orderDetails)
         .then((response) => {
-            console.log('SUCCESS!', response.status, response.text); // Log per debug
+            console.log('SUCCESS!', response.status, response.text); // Log for debugging
             alert('Congratulazioni!\nIl tuo ordine è stato preso in carico. A breve riceverai una mail con tutte le informazioni necessarie per procedere al pagamento.');
-            submitButton.disabled = false; // Abilita il pulsante
-            resetForms(); // Azzera i campi del form
-            window.location.href = '#home'; // Reindirizza alla pagina principale
+            resetForm();
+            window.location.href = "#home"; // Redirect to home section
         }, (error) => {
-            console.log('FAILED...', error); // Log per debug
+            console.log('FAILED...', error); // Log for debugging
             alert('Errore nell\'invio dell\'ordine.');
-            submitButton.disabled = false; // Abilita il pulsante
+            submitButton.disabled = false;
         });
 }
 
-function resetForms() {
+function resetForm() {
     document.getElementById('quote-form').reset();
     document.getElementById('order-form').reset();
     document.getElementById('quote-result').innerHTML = '';
@@ -182,31 +172,26 @@ function resetForms() {
 function submitContactForm(event) {
     event.preventDefault();
 
-    const submitButton = event.target.querySelector('button[type="submit"]');
-    submitButton.disabled = true; // Disabilita il pulsante
-
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
     
     const contactDetails = {
-        name,
-        email,
-        phone,
-        message
+        name: name,
+        email: email,
+        phone: phone,
+        message: message
     };
     
     console.log(contactDetails); // Log for debugging
     
     emailjs.send('service_t1rib3a', 'template_prc6spa', contactDetails)
-    .then((response) => {
-        console.log('SUCCESS!', response.status, response.text); // Log for debugging
-        alert('Richiesta inviata con successo!');
-        submitButton.disabled = false; // Abilita il pulsante
-    }, (error) => {
-        console.log('FAILED...', error); // Log for debugging
-        alert('Errore nell\'invio della richiesta.');
-        submitButton.disabled = false; // Abilita il pulsante
-    });
+        .then((response) => {
+            console.log('SUCCESS!', response.status, response.text); // Log for debugging
+            alert('Richiesta inviata con successo!');
+        }, (error) => {
+            console.log('FAILED...', error); // Log for debugging
+            alert('Errore nell\'invio della richiesta.');
+        });
 }
