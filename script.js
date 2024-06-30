@@ -81,16 +81,16 @@ function calculateQuote(event) {
     const weeklyChanges = 1;
     
     const prices = {
-        "Lenzuolo matrimoniale": 6.10,
-        "Copripiumino matrimoniale": 8.78,
-        "Lenzuolo singolo": 4.88,
-        "Copripiumino singolo": 6.83,
-        "Federa": 1.22,
-        "Asciugamano Telo Doccia": 3.17,
-        "Asciugamano Viso": 2.20,
-        "Asciugamano Ospiti": 1.22,
-        "Scendibagno (Tappetino)": 2.93,
-        "Canovaccio": 1.71
+        "Lenzuolo matrimoniale": 7,
+        "Copripiumino matrimoniale": 10,
+        "Lenzuolo singolo": 6,
+        "Copripiumino singolo": 8.50,
+        "Federa": 1.50,
+        "Asciugamano Telo Doccia": 4,
+        "Asciugamano Viso": 2.5,
+        "Asciugamano Ospiti": 1.5,
+        "Scendibagno (Tappetino)": 3.5,
+        "Canovaccio": 2
     };
     
     const quantities = {
